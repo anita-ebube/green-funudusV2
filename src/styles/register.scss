@@ -1,0 +1,15 @@
+@use './variables';
+
+#register {
+	// border: 2px red;
+	// form button {
+	// 	background-color: variables.$button-hover;
+	// 	&:hover {
+	// 		background-color: #15803d;
+	// 	}
+	// }
+	div input {
+		border: 1px solid rgba(255, 255, 255, 0.2);
+		color: white;
+	}
+}

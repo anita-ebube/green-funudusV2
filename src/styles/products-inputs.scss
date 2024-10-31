@@ -1,0 +1,10 @@
+#product-inputs {
+	div input {
+		all: unset;
+		&::placeholder {
+			font-size: 14px;
+			font-weight: 500;
+			color: #758193;
+		}
+	}
+}

@@ -1,0 +1,25 @@
+@use './variables';
+@use './register.scss';
+@use './products-inputs.scss';
+@use './cart.scss';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body,
+*,
+p {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Inter', sans-serif;
+	color: variables.$text-primary;
+}
+
+.inter-600 {
+	font-family: 'Inter', sans-serif;
+	font-optical-sizing: auto;
+	font-weight: 600;
+	font-style: normal;
+}

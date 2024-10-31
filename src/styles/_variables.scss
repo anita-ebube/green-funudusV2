@@ -1,0 +1,21 @@
+// styles/_variables.scss
+$color-red: #d32f2f;
+$color-white: #ffffff;
+$color-black: #000000;
+$color-dark-gray: #333333;
+$color-light-gray: #999999;
+$color-green: #4caf50;
+$color-error-red: #ff5252;
+$color-button-hover: #35c12f;
+
+$text-primary: $color-dark-gray;
+$text-secondary: $color-light-gray;
+$text-link: $color-red;
+$text-heading: $color-red;
+
+$button-primary-bg: $color-red;
+$button-primary-text: $color-white;
+
+$text-error: $color-error-red;
+$text-success: $color-green;
+$button-hover: $color-button-hover;
