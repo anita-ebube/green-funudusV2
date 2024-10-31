@@ -46,7 +46,7 @@ const Register: React.FC = () => {
 			<div className="hidden lg:block w-[50%]  bg-cover">
 				<img
 					className="w-full h-full object-contain"
-					src="/images/register.png"
+					src="/images/login.jpg"
 					alt="signup_image"
 				/>
 			</div>
