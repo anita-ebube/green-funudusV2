@@ -15,6 +15,7 @@ import { ToastContainer } from 'react-toastify';
 import Security from './Pages/Dashboard/Security';
 import Settings from './Pages/Dashboard/Settings';
 import Icompanies from './Pages/Dashboard/Icompanies';
+import Stores from './Pages/Dashboard/Stores';
 
 const App: React.FC = () => {
 	return (
@@ -26,6 +27,7 @@ const App: React.FC = () => {
 						<Route path="/login" element={<Login />} />
 						<Route path="/dashboard/Home" element={<Home />} />
 						<Route path="/dashboard/Products" element={<Products />} />
+						<Route path="/dashboard/Stores" element={<Stores />} />
 						<Route path="/dashboard/Insurance" element={<Icompanies />} />
 						<Route path="/dashboard/Payments" element={<Payment />} />
 						<Route path="/dashboard/Community" element={<Community />} />

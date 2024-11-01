@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Insurance } from '../../dummyData/data';
-import { InsuranceCard } from '../../interfaces/interface';
+import { Store } from '../../dummyData/data';
+import { StoreCard } from '../../interfaces/interface';
 import ProductInputs from '../../components/ProductInputs';
 import Card from '../../components/InsuranceCard';
-import StoreModal from '../../components/InsuranceModal';
+import StoreModal from '../../components/StoreModal';
 
 const pageTransition = {
 	initial: { opacity: 0, x: 20 },
@@ -13,9 +13,9 @@ const pageTransition = {
 	transition: { duration: 0.7 },
 };
 
-const Icompanies: React.FC = () => {
+const Stores: React.FC = () => {
 	const [currentPage, setCurrentPage] = useState(1);
-	const [filtereProducts, setFilteredProducts] = useState([...Insurance]);
+	const [filtereProducts, setFilteredProducts] = useState([...Store]);
 
 	const itemsPerPage = 4; // Number of items to show per page
 
@@ -28,7 +28,7 @@ const Icompanies: React.FC = () => {
 		} else if (value === 'Previous' && currentPage > 1) setCurrentPage(currentPage - 1);
 	};
 
-	const receiveProductSearch = (arg: InsuranceCard[]) => {
+	const receiveProductSearch = (arg: StoreCard[]) => {
 		console.log('filtered: ', arg);
 		setFilteredProducts(arg);
 	};
@@ -96,10 +96,10 @@ const Icompanies: React.FC = () => {
 						</div>
 					</div>
 				</div>
-				<StoreModal/>
+				<StoreModal />
 			</div>
 		</motion.div>
 	);
 };
 
-export default Icompanies;
+export default Stores;

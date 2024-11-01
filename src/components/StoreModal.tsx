@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../store/store';
 import { setIsModalOpen } from '../store/slices/modalSlice';
 import { addToCart } from '../store/slices/cartSlice';
-import {  StoreCard } from '../interfaces/interface';
+import {  ICard} from '../interfaces/interface';
 import { useNavigate } from 'react-router-dom';
 // import { successToast } from '../utils/toast';
 
@@ -20,9 +20,10 @@ const InsuranceModal: React.FC = () => {
 
 	
 
-	const ToCheckOut = (Insurance: StoreCard) => {
+	const ToCheckOut = (Insurance: ICard) => {
 		dispatch(addToCart(Insurance));
-		navigate('/dashboard/Stores');
+		// successToast('Successfully Added to Cart!');
+		navigate('/dashboard/Products');
 		closeModal();
 	};
 
@@ -81,7 +82,7 @@ const InsuranceModal: React.FC = () => {
 						onClick={() => ToCheckOut(modalProduct!)}
 						className="w-full py-2 lg:py-[15.5px]   bg-primary  text-sm font-semibold rounded-lg hover:bg-primary-dark transition duration-500 text-white "
 					>
-						View our Stores
+						View our Products
 					</button>
 				</div>
 			</div>

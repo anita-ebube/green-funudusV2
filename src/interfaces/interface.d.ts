@@ -27,6 +27,13 @@ export interface InsuranceCard {
 	description: string;
 	insurance: string;
 }
+export interface StoreCard {
+	imageUrl: string;
+	productName: string;
+	amount: string;
+	description: string;
+	insurance: string;
+}
 
 export interface IproductCard {
 	product: ICard;

@@ -1,24 +1,24 @@
 import React from 'react';
-import { IproductCard, StoreCard } from '../interfaces/interface';
+import { ICard, IproductCard } from '../interfaces/interface';
 import { useDispatch } from 'react-redux';
 import { setIsModalOpen, setModalProduct } from '../store/slices/modalSlice';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-const InsuranceCard: React.FC<IproductCard> = ({ product }) => {
+const StoreCards: React.FC<IproductCard> = ({ product }) => {
 	const dispatch = useDispatch();
     const navigate = useNavigate();
 
-	const handleOpenModal = (product: StoreCard) => {
+	const handleOpenModal = (product: ICard) => {
 		dispatch(setIsModalOpen(true));
 		dispatch(setModalProduct(product));
 	};
 
 	
 
-const handleAddToCart = (product: StoreCard) => {
-    console.log(product);
-    navigate('/dashboard/Stores');
-};
+	const handleAddToCart = (product: ICard) => {
+		console.log(product);
+		navigate('/dashboard/Products');
+	};
 
 	const location = useLocation();
 
@@ -59,4 +59,4 @@ const handleAddToCart = (product: StoreCard) => {
 	);
 };
 
-export default InsuranceCard;
+export default StoreCards;
