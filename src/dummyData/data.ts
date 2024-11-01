@@ -76,34 +76,34 @@ export const productCard: ICard[] = [
 ];
 export const Insurance: InsuranceCard[] = [
 	{
-		imageUrl: '/images/taj.jpg',
+		imageUrl: '/images/hilal.jpg',
 		amount: '',
-		productName: 'TAJ Insurance Company',
+		productName: 'hilal takaful nigeria limited',
 		description:
 			'Fresh, juicy organic tomatoes, grown without pesticides. Perfect for salads, sauces, or sandwiches.',
 		insurance: '5%',
 	},
 	
 	{
-		imageUrl: '/images/leadway.jpg',
+		imageUrl: '/images/salam.png',
 		amount: '',
-		productName: 'Lead Way Assurance',
+		productName: 'salam takaful insurance',
 		description:
 			'Pure honey collected from local bees, rich in natural enzymes. Great as a sweetener or spread',
 		insurance: '10%',
 	},
 	{
-		imageUrl: '/images/jaiz.png',
+		imageUrl: '/images/consolidated.png',
 		amount: '',
-		productName: 'Jaiz',
+		productName: 'Consolidated Hallmark Insurance',
 		description:
 			'Potatoes with a naturally sweet flavor, rich in fiber and vitamin A. Ideal for roasting, mashing, or baking',
 		insurance: '10%',
 	},
 	{
-		imageUrl: '/images/naic.jpg',
+		imageUrl: '/images/goxi.jpg',
 		amount: '',
-		productName: 'Nigerian Agricultural Insurance Corporation',
+		productName: 'GOXI Microinsurance',
 		description:
 			'Eggs from free-range chickens, offering rich flavor and golden yolks. Ideal for baking or a hearty breakfast.',
 		insurance: '10%',
