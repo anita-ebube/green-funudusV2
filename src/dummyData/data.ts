@@ -83,14 +83,7 @@ export const Insurance: InsuranceCard[] = [
 			'Fresh, juicy organic tomatoes, grown without pesticides. Perfect for salads, sauces, or sandwiches.',
 		insurance: '5%',
 	},
-	{
-		imageUrl: '/images/naic.jpg',
-		amount: '',
-		productName: 'Nigeria',
-		description:
-			'Eggs from free-range chickens, offering rich flavor and golden yolks. Ideal for baking or a hearty breakfast.',
-		insurance: '10%',
-	},
+	
 	{
 		imageUrl: '/images/leadway.jpg',
 		amount: '',
@@ -101,10 +94,18 @@ export const Insurance: InsuranceCard[] = [
 	},
 	{
 		imageUrl: '/images/jaiz.png',
-		amount: '₦300',
+		amount: '',
 		productName: 'Jaiz',
 		description:
 			'Potatoes with a naturally sweet flavor, rich in fiber and vitamin A. Ideal for roasting, mashing, or baking',
+		insurance: '10%',
+	},
+	{
+		imageUrl: '/images/naic.jpg',
+		amount: '',
+		productName: 'Nigerian Agricultural Insurance Corporation',
+		description:
+			'Eggs from free-range chickens, offering rich flavor and golden yolks. Ideal for baking or a hearty breakfast.',
 		insurance: '10%',
 	},
 	{

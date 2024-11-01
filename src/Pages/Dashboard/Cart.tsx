@@ -53,15 +53,15 @@ const Cart: React.FC = () => {
 				(item) =>
 					item.productIndex === index
 						? {
-								...item,
-								qty:
-									operation === 'add'
-										? item.qty + 1
-										: operation === 'minus' && item.qty > 1
+							...item,
+							qty:
+								operation === 'add'
+									? item.qty + 1
+									: operation === 'minus' && item.qty > 1
 										? item.qty - 1
 										: 1,
-								operand: operation,
-						  } // Increase qty if index matches
+							operand: operation,
+						} // Increase qty if index matches
 						: item // Keep item as is if index doesn’t match
 			)
 		);
@@ -139,18 +139,16 @@ const Cart: React.FC = () => {
 										<div className="flex items-center gap-3">
 											<button
 												onClick={() => handleButtonPlusMinus('minus', index)}
-												className={`p-1 rounded-md ${
-													productQty[index].operand === 'minus' ? 'bg-primary' : 'bg-[#FFF3E6]'
-												}`}
+												className={`p-1 rounded-md ${productQty[index].operand === 'minus' ? 'bg-primary' : 'bg-[#FFF3E6]'
+													}`}
 											>
 												<Minus addMinus={productQty[index].operand} />
 											</button>
 											<span className="text-sm">{productQty[index].qty}</span>
 											<button
 												onClick={() => handleButtonPlusMinus('add', index)}
-												className={`p-1 rounded-md ${
-													productQty[index].operand === 'add' ? 'bg-primary' : 'bg-[#FFF3E6]'
-												}`}
+												className={`p-1 rounded-md ${productQty[index].operand === 'add' ? 'bg-primary' : 'bg-[#FFF3E6]'
+													}`}
 											>
 												<Add addMinus={productQty[index].operand} />
 											</button>
@@ -172,6 +170,25 @@ const Cart: React.FC = () => {
 					<div className="flex justify-between items-center border-b py-4">
 						<p className="text-secondary text-sm">Subtotal</p>
 						<p className="text-primary text-lg">${totalAmount}</p>
+					</div>
+					<div className='border-b'>
+						<div className="flex justify-between items-center py-4">
+							<label >Choose a Plan</label>
+							<select id="Plan" name="Plan" className='border-0'>
+								<option value="volvo">Insurance Premium</option>
+								<option value="saab">Insurance Golden</option>
+								<option value="fiat">Insurance Standard</option>
+								<option value="audi">Insurance Basic</option>
+							</select>
+						</div>
+					</div>
+					<div className="flex justify-between items-center border-b py-4">
+						<p className="text-secondary text-sm">Commission</p>
+						<p className="text-primary text-lg">
+							${totalAmount ? (totalAmount * 0.1).toFixed(2) : '0.00'}
+						</p>
+
+
 					</div>
 					<button
 						onClick={() => handlePayment('Checkout')}
