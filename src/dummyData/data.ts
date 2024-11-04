@@ -142,6 +142,15 @@ export const Insurance: InsuranceCard[] = [
 	},
 ];
 export const Store: StoreCard[] = [
+	
+	{
+		imageUrl: '/images/animalCare.png',
+		amount: '',
+		productName: 'Animal Care',
+		description:
+			'Potatoes with a naturally sweet flavor, rich in fiber and vitamin A. Ideal for roasting, mashing, or baking',
+		insurance: '10%',
+	},
 	{
 		imageUrl: '/images/store2.jpg',
 		amount: '',
@@ -151,7 +160,7 @@ export const Store: StoreCard[] = [
 		insurance: '5%',
 	},
 	{
-		imageUrl: '/images/store2.png',
+		imageUrl: '/images/konsult.jpg',
 		amount: '',
 		productName: 'Vital Feed',
 		description:
@@ -164,14 +173,6 @@ export const Store: StoreCard[] = [
 		productName: 'Hybrid',
 		description:
 			'Pure honey collected from local bees, rich in natural enzymes. Great as a sweetener or spread',
-		insurance: '10%',
-	},
-	{
-		imageUrl: '/images/jaiz.png',
-		amount: '₦300',
-		productName: 'Jaiz',
-		description:
-			'Potatoes with a naturally sweet flavor, rich in fiber and vitamin A. Ideal for roasting, mashing, or baking',
 		insurance: '10%',
 	},
 	{
