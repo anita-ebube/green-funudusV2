@@ -53,7 +53,7 @@ const handleAddToCart = (product: StoreCard) => {
 				onClick={() => handleAddToCart(product)}
 				className="px-[10px] py-2 border-2 text-primary text-xs border-primary rounded-md bg-white absolute z-10 bottom-[3%] left-[5%]"
 			>
-				View our Products
+				View our Stores
 			</button>
 		</div>
 	);

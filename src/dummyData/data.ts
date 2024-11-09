@@ -34,43 +34,27 @@ export const productCard: ICard[] = [
 		insurance: '10%',
 	},
 	{
-		imageUrl: '/images/fish.jpg',
-		amount: '₦300',
-		productName: 'Fish Feed',
+		imageUrl: '/images/chickenFeed.jpg',
+		amount: '₦500/paint',
+		productName: 'Chicken Feed',
 		description:
-			'Potatoes with a naturally sweet flavor, rich in fiber and vitamin A. Ideal for roasting, mashing, or baking',
+			'Fresh, juicy organic tomatoes, grown without pesticides. Perfect for salads, sauces, or sandwiches.',
+		insurance: '5%',
+	},
+	{
+		imageUrl: '/images/vaccine.jpg',
+		amount: '₦3000/bottle',
+		productName: 'Vaccines',
+		description:
+			'Eggs from free-range chickens, offering rich flavor and golden yolks. Ideal for baking or a hearty breakfast.',
 		insurance: '10%',
 	},
 	{
-		imageUrl: '/images/berry.png',
-		amount: '₦300',
-		productName: 'Fresh StrawBerries',
+		imageUrl: '/images/drug.jpg',
+		amount: '₦1000/Pack',
+		productName: 'Tablet Drugs',
 		description:
-			'Sweet and juicy strawberries, hand-picked at peak ripeness. Perfect for snacking, desserts, or making jam',
-		insurance: '10%',
-	},
-	{
-		imageUrl: '/images/carrot.png',
-		amount: '₦300',
-		productName: 'Organic Carrots',
-		description:
-			'Crunchy organic carrots, rich in beta-carotene and antioxidants. Ideal for snacking, salads, and soups',
-		insurance: '10%',
-	},
-	{
-		imageUrl: '/images/milk.png',
-		amount: '₦300',
-		productName: 'Almond Milk',
-		description:
-			'Homemade milk from raw, organic almonds. Dairy-free and perfect for smoothies, cereals, and baking.',
-		insurance: '10%',
-	},
-	{
-		imageUrl: '/images/spinach.png',
-		amount: '₦300',
-		productName: 'Fresh Spinach',
-		description:
-			'Vibrant spinach leaves, packed with iron and vitamins. Perfect for salads, soups, and green smoothies.',
+			'Pure honey collected from local bees, rich in natural enzymes. Great as a sweetener or spread',
 		insurance: '10%',
 	},
 ];
@@ -109,35 +93,36 @@ export const Insurance: InsuranceCard[] = [
 		insurance: '10%',
 	},
 	{
-		imageUrl: '/images/berry.png',
+		imageUrl: '/images/hilal.jpg',
 		amount: '',
-		productName: 'Fresh StrawBerries',
+		productName: 'hilal takaful nigeria limited',
 		description:
-			'Sweet and juicy strawberries, hand-picked at peak ripeness. Perfect for snacking, desserts, or making jam',
+			'Fresh, juicy organic tomatoes, grown without pesticides. Perfect for salads, sauces, or sandwiches.',
+		insurance: '5%',
+	},
+	
+	{
+		imageUrl: '/images/salam.png',
+		amount: '',
+		productName: 'salam takaful insurance',
+		description:
+			'Pure honey collected from local bees, rich in natural enzymes. Great as a sweetener or spread',
 		insurance: '10%',
 	},
 	{
-		imageUrl: '/images/carrot.png',
+		imageUrl: '/images/consolidated.png',
 		amount: '',
-		productName: 'Organic Carrots',
+		productName: 'Consolidated Hallmark Insurance',
 		description:
-			'Crunchy organic carrots, rich in beta-carotene and antioxidants. Ideal for snacking, salads, and soups',
+			'Potatoes with a naturally sweet flavor, rich in fiber and vitamin A. Ideal for roasting, mashing, or baking',
 		insurance: '10%',
 	},
 	{
-		imageUrl: '/images/milk.png',
+		imageUrl: '/images/goxi.jpg',
 		amount: '',
-		productName: 'Almond Milk',
+		productName: 'GOXI Microinsurance',
 		description:
-			'Homemade milk from raw, organic almonds. Dairy-free and perfect for smoothies, cereals, and baking.',
-		insurance: '10%',
-	},
-	{
-		imageUrl: '/images/spinach.png',
-		amount: '',
-		productName: 'Fresh Spinach',
-		description:
-			'Vibrant spinach leaves, packed with iron and vitamins. Perfect for salads, soups, and green smoothies.',
+			'Eggs from free-range chickens, offering rich flavor and golden yolks. Ideal for baking or a hearty breakfast.',
 		insurance: '10%',
 	},
 ];
@@ -176,35 +161,35 @@ export const Store: StoreCard[] = [
 		insurance: '10%',
 	},
 	{
-		imageUrl: '/images/berry.png',
+		imageUrl: '/images/animalCare.png',
 		amount: '',
-		productName: 'Fresh StrawBerries',
+		productName: 'Animal Care',
 		description:
-			'Sweet and juicy strawberries, hand-picked at peak ripeness. Perfect for snacking, desserts, or making jam',
+			'Potatoes with a naturally sweet flavor, rich in fiber and vitamin A. Ideal for roasting, mashing, or baking',
 		insurance: '10%',
 	},
 	{
-		imageUrl: '/images/carrot.png',
+		imageUrl: '/images/store2.jpg',
 		amount: '',
-		productName: 'Organic Carrots',
+		productName: 'Chikun Feed & Ultima',
 		description:
-			'Crunchy organic carrots, rich in beta-carotene and antioxidants. Ideal for snacking, salads, and soups',
+			'Fresh, juicy organic tomatoes, grown without pesticides. Perfect for salads, sauces, or sandwiches.',
+		insurance: '5%',
+	},
+	{
+		imageUrl: '/images/konsult.jpg',
+		amount: '',
+		productName: 'Vital Feed',
+		description:
+			'Eggs from free-range chickens, offering rich flavor and golden yolks. Ideal for baking or a hearty breakfast.',
 		insurance: '10%',
 	},
 	{
-		imageUrl: '/images/milk.png',
+		imageUrl: '/images/store3.jpg',
 		amount: '',
-		productName: 'Almond Milk',
+		productName: 'Hybrid',
 		description:
-			'Homemade milk from raw, organic almonds. Dairy-free and perfect for smoothies, cereals, and baking.',
-		insurance: '10%',
-	},
-	{
-		imageUrl: '/images/spinach.png',
-		amount: '',
-		productName: 'Fresh Spinach',
-		description:
-			'Vibrant spinach leaves, packed with iron and vitamins. Perfect for salads, soups, and green smoothies.',
+			'Pure honey collected from local bees, rich in natural enzymes. Great as a sweetener or spread',
 		insurance: '10%',
 	},
 ];

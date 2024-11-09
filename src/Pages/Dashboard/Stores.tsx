@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Store } from '../../dummyData/data';
 import { StoreCard } from '../../interfaces/interface';
 import ProductInputs from '../../components/ProductInputs';
-import Card from '../../components/InsuranceCard';
+import Card from '../../components/StoreCards';
 import StoreModal from '../../components/StoreModal';
 
 const pageTransition = {

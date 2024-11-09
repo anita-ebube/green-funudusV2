@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { setIsModalOpen, setModalProduct } from '../store/slices/modalSlice';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-const StoreCards: React.FC<IproductCard> = ({ product }) => {
+const StoreCard: React.FC<IproductCard> = ({ product }) => {
 	const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -15,10 +15,10 @@ const StoreCards: React.FC<IproductCard> = ({ product }) => {
 
 	
 
-	const handleAddToCart = (product: ICard) => {
-		console.log(product);
-		navigate('/dashboard/Products');
-	};
+const handleAddToCart = (product: ICard) => {
+    console.log(product);
+    navigate('/dashboard/Products');
+};
 
 	const location = useLocation();
 
@@ -59,4 +59,4 @@ const StoreCards: React.FC<IproductCard> = ({ product }) => {
 	);
 };
 
-export default StoreCards;
+export default StoreCard;

@@ -4,7 +4,7 @@ import { productCard } from '../../dummyData/data';
 import { ICard } from '../../interfaces/interface';
 import ProductInputs from '../../components/ProductInputs';
 import ProductModal from '../../components/ProductModal';
-import Card from '../../components/Card';
+import Card from '../../components/StoreCards';
 
 const pageTransition = {
 	initial: { opacity: 0, x: 20 },

@@ -82,7 +82,7 @@ const InsuranceModal: React.FC = () => {
 						onClick={() => ToCheckOut(modalProduct!)}
 						className="w-full py-2 lg:py-[15.5px]   bg-primary  text-sm font-semibold rounded-lg hover:bg-primary-dark transition duration-500 text-white "
 					>
-						View our Products
+						View our Product
 					</button>
 				</div>
 			</div>
