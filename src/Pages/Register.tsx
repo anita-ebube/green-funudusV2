@@ -130,7 +130,6 @@ const Register: React.FC = () => {
 							<Link to="/login" className="text-primary cursor-pointer">
 								Sign in
 							</Link>
-							<Link to="/email"> Reset password</Link>
 						</p>
 					</div>
 				</form>
