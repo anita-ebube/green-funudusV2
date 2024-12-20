@@ -8,6 +8,7 @@ import Insurance from './Pages/Dashboard/Insurance';
 import Payment from './Pages/Dashboard/Payment';
 import Products from './Pages/Dashboard/Products';
 import Login from './Pages/Login';
+import Email from './Pages/Email';
 import Register from './Pages/Register';
 import Community from './Pages/Dashboard/Community';
 import { AnimatePresence } from 'framer-motion';
@@ -25,6 +26,7 @@ const App: React.FC = () => {
 					<Route path="/" element={<MainLayout />}>
 						<Route index element={<Register />} />
 						<Route path="/login" element={<Login />} />
+						<Route path="/email" element={<Email />} />
 						<Route path="/dashboard/Home" element={<Home />} />
 						<Route path="/dashboard/Products" element={<Products />} />
 						<Route path="/dashboard/Stores" element={<Stores />} />

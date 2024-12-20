@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../store/store';
 import { setIsModalOpen } from '../store/slices/modalSlice';
 import { addToCart } from '../store/slices/cartSlice';
-import { ICard } from '../interfaces/interface';
+import { ProductCard, IproductCard } from '../interfaces/interface';
 import { useNavigate } from 'react-router-dom';
 import { successToast } from '../utils/toast';
 
@@ -18,14 +18,14 @@ const ProductModal: React.FC = () => {
 		dispatch(setIsModalOpen(false));
 	};
 
-	const handleAddToCart = (product: ICard) => {
+	const handleAddToCart = (product: ProductCard) => {
 		closeModal();
 		console.log(product);
 		dispatch(addToCart(product));
 		successToast('Successfully Added to Cart!');
 	};
 
-	const ToCheckOut = (product: ICard) => {
+	const ToCheckOut = (product: ProductCard) => {
 		dispatch(addToCart(product));
 		successToast('Successfully Added to Cart!');
 		navigate('/dashboard/Products/cart/Checkout');
@@ -63,7 +63,7 @@ const ProductModal: React.FC = () => {
 
 				{/* <!-- Product Image --> */}
 				<img
-					src={modalProduct?.imageUrl}
+					src={`http://127.0.0.1:8000${modalProduct?.get_image}`} 
 					alt="tomatoes"
 					className="w-full h-auto mb-4 rounded-lg"
 				/>
@@ -71,7 +71,7 @@ const ProductModal: React.FC = () => {
 				{/* <!-- Product Details --> */}
 				<div className="mb-2 flex justify-between text-xs">
 					<p className="md:text-sm lg:text-base font-semibold text-secondary">
-						{modalProduct?.productName}
+						{modalProduct?.name}
 					</p>
 					<p className="text-primary md:text-sm lg:text-base font-semibold">
 						{modalProduct?.amount}

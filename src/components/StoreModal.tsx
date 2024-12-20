@@ -58,7 +58,7 @@ const InsuranceModal: React.FC = () => {
 
 				{/* <!-- Product Image --> */}
 				<img
-					src={modalProduct?.imageUrl}
+					src={modalProduct?.logo}
 					alt="tomatoes"
 					className="w-full h-auto mb-4 rounded-lg"
 				/>

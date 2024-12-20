@@ -39,7 +39,7 @@ const Home: React.FC = () => {
 		>
 			<div className="pt-20 px-3 ">
 				<div>
-					<p className="text-2xl text-secondary font-semibold">Hi {user.name.split(' ')[0]}</p>
+					<p className="text-2xl text-secondary font-semibold">Hi {user.username.split(' ')[0]}</p>
 					<p className="text-sm">Hello, Welcome Back!</p>
 				</div>
 				<div className="md:flex gap-7 mb-5">

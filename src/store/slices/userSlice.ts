@@ -1,7 +1,7 @@
 // src/store/slices/navigationSlice.ts
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 interface IUser {
-	name: string;
+	username: string;
 	email?: string;
 	password: string;
 }
@@ -11,7 +11,7 @@ interface UserState {
 }
 
 const initialState: UserState = {
-	user: { name: '', email: '', password: '' },
+	user: { username: '', email: '', password: '' },
 };
 
 const userSlice = createSlice({

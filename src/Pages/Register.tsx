@@ -4,10 +4,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../store/slices/userSlice';
 import { errorToast, successToast } from '../utils/toast';
+import axios from 'axios';
 
 const Register: React.FC = () => {
 	// const [error] = useState<Iform | null>(null);
-	const [formInput, setFormInput] = useState<Iform>({ name: '', email: '', password: '' });
+	const [formInput, setFormInput] = useState<Iform>({ username: '', email: '', password: '' });
 	const dispatch = useDispatch();
 
 	const formHandler = (event: ChangeEvent<HTMLInputElement>) => {
@@ -19,22 +20,39 @@ const Register: React.FC = () => {
 	};
 	const navigate = useNavigate();
 
-	const formSubmit = (e: React.FormEvent) => {
+	const formSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
 
 		if (
 			formInput.email?.length === 0 ||
-			formInput.name.length === 0 ||
+			formInput.username.length === 0 ||
 			formInput.password.length === 0
 		) {
 			errorToast('All fields are required!!!');
 			return;
 		} else {
-			localStorage.setItem('userDetails', JSON.stringify(formInput));
-			console.log('form: ', formInput);
-			dispatch(setUser(formInput));
-			navigate('/dashboard/Home');
-			successToast('successfully Registered!');
+			try {
+				
+				const response = axios.post('http://127.0.0.1:8000/api/v1/auth/register/',
+					formInput
+				)
+
+				const data = (await response).data
+				const token = data.token;
+
+				if ((await response).status == 201){
+					localStorage.setItem('userDetails', JSON.stringify(formInput));
+					localStorage.setItem('access_token', JSON.stringify(token))
+					// dispatch(setUser(formInput));
+					navigate('/dashboard/Settings');
+					successToast('successfully Registered!');
+				} else {
+					console.error('error creating user, try again.')
+				}
+			} catch (error: any){
+				console.error(error);
+			}
+			
 		}
 	};
 
@@ -70,7 +88,7 @@ const Register: React.FC = () => {
 						</label>
 						<input
 							type="text"
-							name="name"
+							name="username"
 							id="username"
 							placeholder="Name"
 							onChange={formHandler}
@@ -112,6 +130,7 @@ const Register: React.FC = () => {
 							<Link to="/login" className="text-primary cursor-pointer">
 								Sign in
 							</Link>
+							<Link to="/email"> Reset password</Link>
 						</p>
 					</div>
 				</form>

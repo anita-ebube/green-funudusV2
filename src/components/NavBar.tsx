@@ -61,7 +61,7 @@ const NavBar: React.FC = () => {
 					<img width={50} src="/images/Frame 12.png" alt="dp" />
 				</div>
 				<div className="hidden sm:block">
-					<p className="text-lg font-semibold text-secondary">{user.name}</p>
+					<p className="text-lg font-semibold text-secondary">{user.username}</p>
 					<p className="text-sm text-primary">Free plan</p>
 				</div>
 			</div>

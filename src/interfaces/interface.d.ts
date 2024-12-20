@@ -1,5 +1,5 @@
 export interface Iform {
-	name: string;
+	username: string;
 	email?: string;
 	password: string;
 }
@@ -14,21 +14,33 @@ export interface IFilters {
 }
 
 export interface ICard {
-	imageUrl: string;
+	name:string;
+	logo: string;
 	productName: string;
 	amount: string;
 	description: string;
 	insurance: string;
 }
+
 export interface InsuranceCard {
-	imageUrl: string;
+	name:string;
+	logo: string;
 	productName: string;
 	amount: string;
+	description: string;
+	insurance: string;
+}
+export interface ProductCard {
+	category_name:string;
+	get_image: string;
+	name: string;
+	price: string;
 	description: string;
 	insurance: string;
 }
 export interface StoreCard {
-	imageUrl: string;
+	name:string;
+	logo: string;
 	productName: string;
 	amount: string;
 	description: string;
@@ -36,6 +48,10 @@ export interface StoreCard {
 }
 
 export interface IproductCard {
+	product: ProductCard;
+}
+
+export interface IIcard {
 	product: ICard;
 }
 

@@ -17,9 +17,6 @@ const InsuranceModal: React.FC = () => {
 	const closeModal = () => {
 		dispatch(setIsModalOpen(false));
 	};
-
-	
-
 	const ToCheckOut = (Insurance: StoreCard) => {
 		dispatch(addToCart(Insurance));
 		navigate('/dashboard/Stores');
@@ -46,7 +43,7 @@ const InsuranceModal: React.FC = () => {
 			>
 				{/* <!-- Modal Header --> */}
 				<div className="flex justify-between items-center mb-4">
-					<p className="text-base font-semibold text-secondary">Product details</p>
+					<p className="text-base font-semibold text-secondary">Insurance details</p>
 					<p onClick={closeModal} className="flex items-center gap-1 cursor-pointer">
 						close{' '}
 						<span>
@@ -57,7 +54,7 @@ const InsuranceModal: React.FC = () => {
 
 				{/* <!-- Product Image --> */}
 				<img
-					src={modalProduct?.imageUrl}
+					src={`http://127.0.0.1:8000${modalProduct?.logo}`} 
 					alt="tomatoes"
 					className="w-full h-auto mb-4 rounded-lg"
 				/>
