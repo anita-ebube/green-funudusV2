@@ -24,7 +24,7 @@ const Login: React.FC = () => {
         }
 
         try {
-            const response = await axios.post('http://127.0.0.1:8000/api/v1/auth/login/', formInput);
+            const response = await axios.post('http://127.0.0.1:8080/api/v1/auth/login/', formInput);
 
             if (response.status === 200) {
                 localStorage.setItem('access_token', JSON.stringify(response.data.token));

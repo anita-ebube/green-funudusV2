@@ -32,7 +32,7 @@ const Email: React.FC = () => {
     setLoading(true);
     try {
       const response = await axios.post(
-        'http://127.0.0.1:8000/api/v1/auth/request-password-reset-email/',
+        'http://127.0.0.1:8080/api/v1/auth/request-password-reset-email/',
         { email }
       );
       

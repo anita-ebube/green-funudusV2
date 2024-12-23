@@ -63,7 +63,7 @@ const ProductModal: React.FC = () => {
 
 				{/* <!-- Product Image --> */}
 				<img
-					src={`http://127.0.0.1:8000${modalProduct?.get_image}`} 
+					src={`http://127.0.0.1:8080${modalProduct?.get_image}`} 
 					alt="tomatoes"
 					className="w-full h-auto mb-4 rounded-lg"
 				/>
