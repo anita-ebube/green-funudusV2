@@ -65,7 +65,7 @@ const Products: React.FC = () => {
       variants={pageTransition}
       className="min-h-screen bg-gray-50"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8  py-14 lg:ml-[242px] border-2 min-h-screen">
         <div className="bg-white rounded-xl shadow-sm p-6">
           <div className="w-full mb-6">
             {storeData && (
