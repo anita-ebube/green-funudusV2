@@ -26,6 +26,7 @@ const Icompanies: React.FC = () => {
             try {
                 setLoading(true);
                 const response = await axios.get('http://127.0.0.1:8080/api/v1/insurers/');
+                console.log(response, 'gifted')
                 setFilteredProducts(response.data);
                 setLoading(false);
             } catch (err: any) {

@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { setActivePage } from '../../store/slices/navigationSlice';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { PaystackButton } from "react-paystack";
 import { motion } from 'framer-motion';
 import { RootState } from '../../store/store';
 
@@ -12,10 +13,59 @@ const pageTransition = {
 	transition: { duration: 0.7 },
 };
 
+
+
 const Checkout: React.FC = () => {
 	const cartProducts = useSelector((state: RootState) => state.cart.cartProduct);
+	const [email, setEmail] = useState('');
+	const [fullName, setFullName] = useState('');
+	const [phone, setPhone] = useState('');
+	const [address, setAddress] = useState('');
+	const [state, setState] = useState('');
+	const [lga, setLga] = useState('');
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
+
+
+	const totalAmount = cartProducts.reduce((total, product) => {
+		const amount = parseFloat(product.amount.replace(/[^0-9.-]+/g, ''));
+		return total + amount;
+	}, 0);
+
+	const config = {
+		reference: (new Date()).getTime().toString(),
+		email: email,
+		amount: totalAmount * 100, // Convert to kobo
+		publicKey: 'pk_live_fe190e51a0efed431b5666cb2ec4f9df50dbbd19',
+		metadata: {
+			custom_fields: [
+				{
+					display_name: "Full Name",
+					variable_name: "full_name",
+					value: fullName
+				},
+				{
+					display_name: "Phone",
+					variable_name: "phone",
+					value: phone
+				},
+				{
+					display_name: "Address",
+					variable_name: "address",
+					value: `${address}, ${lga}, ${state}`
+				}
+			]
+		}
+	};
+
+	const handlePaystackSuccess = (reference: any) => {
+		console.log('Payment successful', reference);
+		// Handle successful payment (e.g., clear cart, show success message)
+	};
+
+	const handlePaystackClose = () => {
+		console.log('Payment closed');
+	};
 	const backToCart = () => {
 		dispatch(setActivePage('Cart'));
 		navigate(-1);
@@ -97,21 +147,17 @@ const Checkout: React.FC = () => {
 						</div>
 					</div>
 				</div>
-
 				{/* <!-- Payment Method Section --> */}
 				<div className="mb-8 bg-white rounded-lg w-full p-4">
-					<h2 className="text-lg font-semibold text-gray-900 mb-4">Select Payment Method</h2>
-					<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-						{/* <!-- Credit/Debit Card --> */}
-						<div className="border border-gray-300 rounded-lg p-4 flex items-center gap-2 cursor-pointer hover:bg-gray-100">
-							<img src="/svg-icons/card.svg" alt="Card Icon" className="w-5 h-5" />
-							<span className="text-sm font-medium text-gray-700"> Debit Card</span>
-						</div>
-						{/* <!-- Bank Transfer --> */}
-						<div className="border border-gray-300 rounded-lg p-4 flex items-center gap-2 cursor-pointer hover:bg-gray-100">
-							<img src="/svg-icons/share.svg" alt="Bank Icon" className="w-5 h-5" />
-							<span className="text-sm font-medium text-gray-700">Bank Transfer</span>
-						</div>
+					<h2 className="text-lg font-semibold text-gray-900 mb-4">Payment</h2>
+					<div className="w-full">
+						<PaystackButton
+							{...config}
+							onSuccess={handlePaystackSuccess}
+							onClose={handlePaystackClose}
+							className="w-full bg-primary hover:bg-primary-dark text-white font-bold py-3 px-4 rounded-lg transition-colors"
+							text="Pay Now"
+						/>
 					</div>
 				</div>
 			</div>
@@ -144,6 +190,8 @@ const Checkout: React.FC = () => {
 								<p className="text-xs  text-gray-500 leading-5">{product.description}</p>
 							</div>
 							{/* Price Section */}
+
+
 						</div>
 					))}
 				</div>

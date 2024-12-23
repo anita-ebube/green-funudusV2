@@ -3,42 +3,58 @@ import { IIcard, StoreCard } from '../interfaces/interface';
 import { useDispatch } from 'react-redux';
 import { setIsModalOpen, setModalProduct } from '../store/slices/modalSlice';
 import { useLocation, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const InsuranceCard: React.FC<IIcard> = ({ product }) => {
-	const dispatch = useDispatch();
-	const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const location = useLocation();
 
-	const handleOpenModal = (product: StoreCard) => {
-		dispatch(setIsModalOpen(true));
-		dispatch(setModalProduct(product));
-	};
-	const handleAddToCart = (product: StoreCard) => {
-		console.log(product);
-		navigate('/dashboard/Stores');
-	};
+    const handleOpenModal = (product: StoreCard) => {
+        dispatch(setIsModalOpen(true));
+        dispatch(setModalProduct(product));
+    };
 
-	const location = useLocation();
-	return (
-		<div className="p-[10px] w-full max-w-[230px] border-2 border-[#EBEEF4] rounded-lg relative">
-			<div onClick={() => handleOpenModal(product)} className="pb-9">
-				<img src={`http://127.0.0.1:8080${product.logo}`} alt="Product logo" />
-				<div className="text-sm text-secondary font-semibold flex justify-between mt-[10px]">
-					<p>{product.name}</p>
-					{/* <p className="text-primary font-semibold">{product.description}</p> */}
-				</div>
-				<div className="py-[10px] text-xs h-full max-h-[84px]">{product.description}</div>
-				<button
-					onClick={() => handleAddToCart(product)}
-					className="px-[10px] py-2 border-2 text-primary text-xs border-primary rounded-md bg-white absolute z-10 bottom-[3%] left-[5%]"
-				>
-					View our Stores
-				</button>
-			</div>
+    const fetchInsuranceDetails = async () => {
+        try {
+            const response = await axios.get(`http://127.0.0.1:8080/api/v1/insurers/${product.slug}/`);
+            // Navigate to stores page with the fetched data
+            navigate('/dashboard/Stores', {
+                state: {
+                    insuranceData: response.data,
+                    insurerSlug: product.slug
+                }
+            });
+        } catch (error) {
+            console.error('Error fetching insurance details:', error);
+            // Optionally handle error (show error message, etc.)
+        }
+    };
 
-
-		</div>
-
-	);
+    return (
+        <div className="p-[10px] w-full max-w-[230px] border-2 border-[#EBEEF4] rounded-lg relative">
+            <div onClick={() => handleOpenModal(product)} className="pb-9">
+                <img 
+                    src={product.logo ? `http://127.0.0.1:8080${product.logo}` : '/default-logo.png'} 
+                    alt={product.name} 
+                    className="w-full h-auto object-cover"
+                />
+                <div className="text-sm text-secondary font-semibold flex justify-between mt-[10px]">
+                    <p>{product.name}</p>
+                </div>
+                <div className="py-[10px] text-xs h-full max-h-[84px]">{product.description}</div>
+                <button
+                    onClick={(e) => {
+                        e.stopPropagation(); // Prevent modal from opening
+                        fetchInsuranceDetails();
+                    }}
+                    className="px-[10px] py-2 border-2 text-primary text-xs border-primary rounded-md bg-white absolute z-10 bottom-[3%] left-[5%] hover:bg-primary hover:text-white transition-colors"
+                >
+                    View our Stores
+                </button>
+            </div>
+        </div>
+    );
 };
 
 export default InsuranceCard;

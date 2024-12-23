@@ -1,105 +1,139 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { useLocation } from 'react-router-dom';
 import { Store } from '../../dummyData/data';
 import { StoreCard } from '../../interfaces/interface';
-import ProductInputs from '../../components/ProductInputs';
 import Card from '../../components/StoreCards';
 import StoreModal from '../../components/StoreModal';
+import { Search } from 'lucide-react';
 
 const pageTransition = {
-	initial: { opacity: 0, x: 20 },
-	animate: { opacity: 1, x: 0 },
-	exit: { opacity: 0, x: -20 },
-	transition: { duration: 0.7 },
+  initial: { opacity: 0, x: 20 },
+  animate: { opacity: 1, x: 0 },
+  exit: { opacity: 0, x: -20 },
+  transition: { duration: 0.7 },
 };
 
 const Stores: React.FC = () => {
-	const [currentPage, setCurrentPage] = useState(1);
-	const [filtereProducts, setFilteredProducts] = useState([...Store]);
+  const location = useLocation();
+  const [currentPage, setCurrentPage] = useState(1);
+  const [filteredProducts, setFilteredProducts] = useState<StoreCard[]>([]);
+  const [searchTerm, setSearchTerm] = useState('');
+  const itemsPerPage = 8;
 
-	const itemsPerPage = 4; // Number of items to show per page
+  useEffect(() => {
+    if (location.state?.insuranceData) {
+      const data = location.state.insuranceData;
+      const formattedData = Array.isArray(data) ? data : [data];
+      setFilteredProducts(formattedData);
+    } else {
+      setFilteredProducts([...Store]);
+    }
+  }, [location.state]);
 
-	const handleCurrentPage = (page: number) => {
-		setCurrentPage(page);
-	};
-	const handlePageNumber = (value: string) => {
-		if (currentPage < Math.ceil(filtereProducts.length / itemsPerPage) && value === 'Next') {
-			setCurrentPage((prev) => prev + 1);
-		} else if (value === 'Previous' && currentPage > 1) setCurrentPage(currentPage - 1);
-	};
+  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(event.target.value);
+    setCurrentPage(1);
+  };
 
-	const receiveProductSearch = (arg: StoreCard[]) => {
-		console.log('filtered: ', arg);
-		setFilteredProducts(arg);
-	};
+  const filteredAndSearchedProducts = filteredProducts.filter(product =>
+    product.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
-	// Calculate the products to show for the current page
-	const indexOfLastProduct = currentPage * itemsPerPage;
-	const indexOfFirstProduct = indexOfLastProduct - itemsPerPage;
-	const currentProducts = filtereProducts.slice(indexOfFirstProduct, indexOfLastProduct);
+  const currentProducts = Array.isArray(filteredAndSearchedProducts) 
+    ? filteredAndSearchedProducts.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
+    : [];
+  const totalPages = Math.ceil(filteredAndSearchedProducts.length / itemsPerPage);
 
-	return (
-		<motion.div
-			initial="initial"
-			animate="animate"
-			exit="exit"
-			transition={pageTransition.transition}
-			variants={{
-				initial: pageTransition.initial,
-				animate: pageTransition.animate,
-				exit: pageTransition.exit,
-			}}
-			className="pt-4 lg:ml-[242px] border-2 min-h-screen"
-		>
-			<div className="pt-20 lg:ps-6 pe-4">
-				<div className="rounded-lg bg-white p-4 mt-6 w-full flex flex-col items-center">
-					{/* <div className=" w-full max-w-[982.5px]">
-						<ProductInputs getFilteredProducts={receiveProductSearch} />
-					</div> */}
-					<div className="mt-6 flex flex-wrap justify-around md:justify-normal gap-5 mb-12  max-w-[982.5px]">
-						{currentProducts.length > 0 ? (
-							currentProducts.map((product, index) => <Card product={product} key={index} />)
-						) : (
-							<p className="text-gray-500 text-base italic">No products found.</p>
-						)}
-					</div>
-					<div className="w-full flex justify-end  mt-6  max-w-[982.5px]">
-						<div className="w-max  flex gap-2 items-center ">
-							<div
-								className="text-sm font-medium cursor-pointer text-primary flex gap-2 items-center hover:bg-[#dafed9] py-2 px-2 rounded-lg"
-								onClick={() => handlePageNumber('Previous')}
-							>
-								<img src="/svg-icons/arrow-left.svg" alt="" />
-								Previous
-							</div>
-							{Array.from({ length: 2 }, (_, index) => (
-								<div
-									key={index + 1}
-									onClick={() => handleCurrentPage(index + 1)}
-									className={`cursor-pointer text-sm font-medium px-4 py-[7.5px] hover:bg-[#dafed9] ${
-										currentPage === index + 1
-											? 'bg-primary text-white hover:bg-primary '
-											: 'text-primary'
-									} rounded-lg w-max`}
-								>
-									{index + 1}
-								</div>
-							))}
+  return (
+    <motion.div
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      transition={pageTransition.transition}
+      variants={{
+        initial: pageTransition.initial,
+        animate: pageTransition.animate,
+        exit: pageTransition.exit,
+      }}
+      className="pt-14 lg:ml-[242px] border-2 min-h-screen"
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="bg-white rounded-xl shadow-sm p-6">
+          <div className="flex flex-col md:flex-row justify-between items-center mb-8">
+            <div className="w-full md:w-auto mb-4 md:mb-0">
+              <h1 className="text-2xl font-bold text-gray-900">
+                {location.state?.insurerSlug ? `Stores for ${location.state.insurerSlug}` : 'All Stores'}
+              </h1>
+              <p className="text-gray-500 mt-8">
+                Showing {currentProducts.length} of {filteredAndSearchedProducts.length} stores
+              </p>
+            </div>
+            
+            <div className="w-full md:w-72 relative">
+              <input
+                type="text"
+                placeholder="Search stores..."
+                value={searchTerm}
+                onChange={handleSearch}
+                className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-transparent"
+              />
+              <Search className="absolute right-3 top-2.5 text-gray-400" size={20} />
+            </div>
+          </div>
 
-							<div
-								className="cursor-pointer text-sm font-medium text-primary flex gap-2 items-center hover:bg-[#dafed9] py-2 px-2 rounded-lg"
-								onClick={() => handlePageNumber('Next')}
-							>
-								Next
-								<img src="/svg-icons/right-arrow.svg" alt="" />
-							</div>
-						</div>
-					</div>
-				</div>
-				<StoreModal />
-			</div>
-		</motion.div>
-	);
+          {currentProducts.length > 0 ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {currentProducts.map((product, index) => (
+                <Card product={product} key={index} />
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-12">
+              <p className="text-gray-500 text-lg">No stores found matching your search.</p>
+            </div>
+          )}
+
+          {totalPages > 1 && (
+            <div className="mt-8 flex justify-center">
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                  disabled={currentPage === 1}
+                  className="px-4 py-2 rounded-lg border border-gray-300 text-sm font-medium disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
+                >
+                  Previous
+                </button>
+                
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
+                  <button
+                    key={page}
+                    onClick={() => setCurrentPage(page)}
+                    className={`px-4 py-2 rounded-lg text-sm font-medium ${
+                      currentPage === page
+                        ? 'bg-primary text-white'
+                        : 'border border-gray-300 hover:bg-gray-50'
+                    }`}
+                  >
+                    {page}
+                  </button>
+                ))}
+
+                <button
+                  onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+                  disabled={currentPage === totalPages}
+                  className="px-4 py-2 rounded-lg border border-gray-300 text-sm font-medium disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
+                >
+                  Next
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+      <StoreModal />
+    </motion.div>
+  );
 };
 
 export default Stores;

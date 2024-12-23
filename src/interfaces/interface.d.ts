@@ -18,6 +18,7 @@ export interface ICard {
 	logo: string;
 	productName: string;
 	amount: string;
+	slug: string; 
 	description: string;
 	insurance: string;
 }
@@ -26,6 +27,7 @@ export interface InsuranceCard {
 	name:string;
 	logo: string;
 	productName: string;
+	slug: string
 	amount: string;
 	description: string;
 	insurance: string;
@@ -45,6 +47,7 @@ export interface StoreCard {
 	amount: string;
 	description: string;
 	insurance: string;
+	slug: string
 }
 
 export interface IproductCard {
