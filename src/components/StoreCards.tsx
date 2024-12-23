@@ -7,52 +7,54 @@ import { useLocation, useNavigate } from 'react-router-dom';
 const StoreCard: React.FC<IIcard> = ({ product }) => {  
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const location = useLocation();
 
     const handleOpenModal = (product: ICard) => {
         dispatch(setIsModalOpen(true));
         dispatch(setModalProduct(product));
     };
 
-    const handleAddToCart = (product: ICard) => {
-        console.log(product);
-        navigate('/dashboard/Products');
+    const handleViewProducts = (product: ICard) => {
+        navigate('/dashboard/Products', {
+            state: {
+                storeData: product,
+                storeId: product.slug,
+            }
+        });
     };
 
-    const location = useLocation();
-
     return (
-        <div className="p-[10px] w-full max-w-[230px] border-2 border-[#EBEEF4] rounded-lg relative">
-            <div onClick={() => handleOpenModal(product)} className="pb-9">
-                <img src={product.logo} alt="" /> 
-                <div className="text-sm text-secondary font-semibold flex justify-between mt-[10px]">
-                    <p>{product.productName}</p>
-                    <p className="text-primary font-semibold">{product.amount}</p>
+        <div className="p-4 w-full bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
+            <div onClick={() => handleOpenModal(product)} className="relative pb-12">
+                <img 
+                    src={product.logo} 
+                    alt={product.productName} 
+                    className="w-full h-48 object-cover rounded-md"
+                /> 
+                <div className="mt-4 flex justify-between items-center">
+                    <h3 className="text-lg font-medium text-gray-900">{product.productName}</h3>
+                    <span className="text-primary font-semibold">{product.amount}</span>
                 </div>
-                {location.pathname === '/dashboard/Stores' && (
-                    <div
-                        className={`w-full max-w-max p-1 text-primary text-xs bg-[#FFF3E6] flex items-center rounded-md ${
-                            [
-                                'Fresh Spinach',
-                                'Organic Carrots',
-                                'Fresh Strawberries',
-                                'Free-range-eggs',
-                            ].includes(product.productName) && 'hidden'
-                        } `}
-                    >
-                        {product.insurance} Insurance{' '}
-                        <span className="ps-1">
-                            <img src="/svg-icons/info-circle.svg" alt="circle" />
-                        </span>
+                
+                {location.pathname === '/dashboard/Stores' && !['Fresh Spinach', 'Organic Carrots', 'Fresh Strawberries', 'Free-range-eggs'].includes(product.productName) && (
+                    <div className="mt-2 inline-flex items-center px-2 py-1 bg-[#FFF3E6] text-primary text-sm rounded-md">
+                        {product.insurance} Insurance
+                        <img src="/svg-icons/info-circle.svg" alt="info" className="ml-1 w-4 h-4" />
                     </div>
                 )}
-                <div className="py-[10px] text-xs h-full max-h-[84px]">{product.description}</div>
+
+                <p className="mt-3 text-sm text-gray-600 line-clamp-3">{product.description}</p>
+                
+                <button
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        handleViewProducts(product);
+                    }}
+                    className="absolute bottom-0 left-0 w-full px-4 py-2 text-sm font-medium text-primary border-2 border-primary rounded-md hover:bg-primary hover:text-white transition-colors"
+                >
+                    View our Products
+                </button>
             </div>
-            <button
-                onClick={() => handleAddToCart(product)}
-                className="px-[10px] py-2 border-2 text-primary text-xs border-primary rounded-md bg-white absolute z-10 bottom-[3%] left-[5%]"
-            >
-                View our Products
-            </button>
         </div>
     );
 };
