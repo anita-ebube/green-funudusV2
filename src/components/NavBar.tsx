@@ -33,7 +33,7 @@ const NavBar: React.FC = () => {
               Authorization: `Bearer ${token}` 
             }
           });
-		  console.log(response.data.profile, 'umu')
+
           
           if (response.data.profile) {
             setProfileImage(`http://0.0.0.0:8080${response.data.profile.profile_photo}`);
