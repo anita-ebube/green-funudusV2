@@ -33,7 +33,7 @@ const Register: React.FC = () => {
 		} else {
 			try {
 				
-				const response = axios.post('http://127.0.0.1:8080/api/v1/auth/register/',
+				const response = axios.post('http://127.0.0.1:8000/api/v1/auth/register/',
 					formInput
 				)
 

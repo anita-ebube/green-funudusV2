@@ -26,7 +26,7 @@ const Products: React.FC = () => {
 		const fetchProducts = async () => {
 			setIsLoading(true);
 			try {
-				const response = await axios.get('http://127.0.0.1:8080/api/v1/products/');
+				const response = await axios.get('http://127.0.0.1:8000/api/v1/products/');
 				setFilteredProducts(response.data); // Update state with fetched data
 				setError(null); // Clear any previous errors
 			} catch (err) {

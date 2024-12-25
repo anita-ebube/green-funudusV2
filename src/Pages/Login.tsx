@@ -24,7 +24,7 @@ const Login: React.FC = () => {
         }
 
         try {
-            const response = await axios.post('http://127.0.0.1:8080/api/v1/auth/login/', formInput);
+            const response = await axios.post('http://127.0.0.1:8000/api/v1/auth/login/', formInput);
 
             if (response.status === 200) {
                 localStorage.setItem('access_token', JSON.stringify(response.data.token));
@@ -50,7 +50,7 @@ const Login: React.FC = () => {
             id="register"
         >
             <div className="hidden lg:block w-[50%]  bg-cover">
-                <img className="w-full h-full object-contain" src="/images/login.png" alt="signup_image" />
+                <img className="w-full h-full object-contain" src="/images/login.jpg" alt="signup_image" />
             </div>
             <div className="w-full max-w-[442px] lg:max-w-[50%] lg:w-[50%] lg:px-[70px] py-[10px] flex flex-col gap-7  items-center">
                 <div>

@@ -28,7 +28,7 @@ const NavBar: React.FC = () => {
         // Fetch profile image
         try {
 		const token = JSON.parse(localStorage.getItem('access_token') || '""');
-          const response = await axios.get('http://0.0.0.0:8080/api/v1/profile/', {
+          const response = await axios.get('http://0.0.0.0:8000/api/v1/profile/', {
             headers: {
               Authorization: `Bearer ${token}` 
             }
@@ -36,7 +36,7 @@ const NavBar: React.FC = () => {
 
           
           if (response.data.profile) {
-            setProfileImage(`http://0.0.0.0:8080${response.data.profile.profile_photo}`);
+            setProfileImage(`http://0.0.0.0:8000${response.data.profile.profile_photo}`);
           }
         } catch (error) {
           console.error('Error fetching profile image:', error);

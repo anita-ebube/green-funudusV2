@@ -27,7 +27,7 @@ const Insurance: React.FC = () => {
 			
 			try {
 				setIsLoading(true);
-				const response = await axios.get('http://127.0.0.1:8080/api/v1/insurers/slug/');
+				const response = await axios.get('http://127.0.0.1:8000/api/v1/insurers/slug/');
 				setFilteredProducts(response.data); // Update state with fetched data
 				setError(null); // Clear previous errors
 			} catch (err) {
