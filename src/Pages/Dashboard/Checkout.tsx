@@ -25,13 +25,13 @@ const Checkout: React.FC = () => {
   const navigate = useNavigate();
 
   const totalAmount = cartProducts.reduce((total, product) => {
-    const amount = parseFloat(product.amount.replace(/[^0-9.-]+/g, ''));
+    const amount = parseFloat(product.price.replace(/[^0-9.-]+/g, ''));
     return total + amount;
   }, 0);
 
   const componentProps = {
     email,
-    amount: 100 * 100, // Ensure integer
+    amount: totalAmount * 100, 
     metadata: {
       fullName,
       phone,
@@ -166,12 +166,12 @@ const Checkout: React.FC = () => {
           {cartProducts.map((product, index) => (
             <div className="border-t flex gap-3 justify-between md:gap-6 py-4" key={index}>
               <div className="flex-shrink-0 w-20 h-20 md:w-24 md:h-24">
-                <img src={product.imageUrl} alt="" className="object-cover w-full h-full rounded-md" />
+                <img src={product.get_image} alt="" className="object-cover w-full h-full rounded-md" />
               </div>
               <div className="sm:max-w-[300px] w-full lg:max-w-[400px]">
                 <div className="flex justify-between items-center">
-                  <p className="text-md text-secondary font-medium">{product.productName}</p>
-                  <p className="text-primary text-lg text-right">{product.amount}</p>
+                  <p className="text-md text-secondary font-medium">{product.name}</p>
+                  <p className="text-primary text-lg text-right">{product.price}</p>
                 </div>
                 <p className="text-xs text-gray-500 leading-5">{product.description}</p>
               </div>
