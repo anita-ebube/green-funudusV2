@@ -12,7 +12,7 @@ interface Community {
   sector: string;
 }
 
-const Community: React.FC = () => {
+const Communities: React.FC = () => {
   const [communities, setCommunities] = useState<Community[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -90,7 +90,7 @@ const Community: React.FC = () => {
           >
             {community.image ? (
               <img
-                src={`${community.image}`}
+                src={`http://127.0.0.1:8080${community.image}`}
                 alt={community.name}
                 className="w-full h-48 object-cover"
               />
@@ -148,4 +148,4 @@ const Community: React.FC = () => {
   );
 };
 
-export default Community;
+export default Communities;

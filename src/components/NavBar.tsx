@@ -33,8 +33,6 @@ const NavBar: React.FC = () => {
               Authorization: `Bearer ${token}` 
             }
           });
-
-          console.log(response.data.profile, 'profile');
           if (response.data.profile) {
             setProfileImage(`http://127.0.0.1:8080${response.data.profile.profile_photo}`);
           }
