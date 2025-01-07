@@ -86,7 +86,7 @@ const Login: React.FC = () => {
         setErrors({});
 
         try {
-            const response = await axios.post('http://127.0.0.1:8080/api/v1/auth/login/', formInput);
+            const response = await axios.post('https://api.qubic.com.ng/api/v1/auth/login/', formInput);
 
             if (response.status === 200) {
                 localStorage.setItem('access_token', JSON.stringify(response.data.token));
@@ -146,12 +146,10 @@ const Login: React.FC = () => {
     return (
         <div className="bg-black h-screen w-full p-4 lg:p-0 flex justify-center overflow-y-hidden items-center" id="register">
             <div className="hidden lg:block w-[50%] bg-cover">
-                <img className="w-full h-full object-contain" src="/images/login.png" alt="signup_image" />
+            <img className="w-full h-full object-contain" src="/images/login.jpg" alt="signup_image" />
             </div>
             <div className="w-full max-w-[442px] lg:max-w-[50%] lg:w-[50%] lg:px-[70px] py-[10px] flex flex-col gap-7 items-center">
-                <div>
-                    <img src="/svg-icons/logo.svg" alt="logo" />
-                </div>
+                
                 <div className="w-full max-w-[442px]">
                     <h1 className="text-white font-semibold text-3xl md:text-[40px] mb-2 tracking-[-0.04em]">
                         Welcome <span className="text-primary">Back!</span>

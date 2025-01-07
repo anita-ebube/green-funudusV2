@@ -24,7 +24,7 @@ const Card: React.FC<IproductCard> = ({ product }) => {
 	return (
 		<div className="p-[10px] w-full max-w-[230px] border-2 border-[#EBEEF4] rounded-lg relative">
 			<div onClick={() => handleOpenModal(product)} className="pb-9">
-				<img src={`http://127.0.0.1:8080${product.get_image}`}  alt="" />
+				<img src={`http://127.0.0.1:8000${product.get_image}`}  alt="" />
 				<div className="text-sm text-secondary font-semibold flex justify-between mt-[10px]">
 					<p>{product.name}</p>
 					<p className="text-primary font-semibold">{product.price}</p>

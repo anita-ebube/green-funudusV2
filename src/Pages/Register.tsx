@@ -107,7 +107,7 @@ const Register: React.FC = () => {
 
     try {
       const response = await axios.post(
-        'http://127.0.0.1:8080/api/v1/auth/register/',
+        'https://api.qubic.com.ng/api/v1/auth/register/',
         formInput
       );
 

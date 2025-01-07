@@ -28,7 +28,7 @@ const StoreCard: React.FC<IIcard> = ({ product }) => {
         <div className="p-4 w-full bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
             <div onClick={() => handleOpenModal(product)} className="relative pb-12">
                 <img 
-                    src={`http://127.0.0.1:8080${product.logo}`} //product.logo} 
+                    src={`http://127.0.0.1:8000${product.logo}`} //product.logo} 
                     alt={product.name} 
                     className="w-full h-48 object-cover rounded-md"
                 /> 

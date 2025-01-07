@@ -29,7 +29,7 @@ const Communities: React.FC = () => {
     const fetchCommunities = async () => {
       try {
         const token = JSON.parse(localStorage.getItem('access_token') || '""');
-        const response = await axios.get('http://127.0.0.1:8080/api/v1/communities/', {
+        const response = await axios.get('http://127.0.0.1:8000/api/v1/communities/', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -90,7 +90,7 @@ const Communities: React.FC = () => {
           >
             {community.image ? (
               <img
-                src={`http://127.0.0.1:8080${community.image}`}
+                src={`http://127.0.0.1:8000${community.image}`}
                 alt={community.name}
                 className="w-full h-48 object-cover"
               />

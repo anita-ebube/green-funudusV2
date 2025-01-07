@@ -30,7 +30,7 @@ const TransactionTable: React.FC = () => {
           setLoading(false);
           return;
         }
-        const response = await axios.get('http://127.0.0.1:8080/api/v1/dashboard/', {
+        const response = await axios.get('http://127.0.0.1:8000/api/v1/dashboard/', {
           headers: {
             'Authorization': `Bearer ${token.replace(/['"]+/g, '')}`,
 			      'Content-Type': 'application/json'

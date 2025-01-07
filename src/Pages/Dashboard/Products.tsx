@@ -30,8 +30,8 @@ const Products: React.FC = () => {
       setIsLoading(true);
       try {
         const url = storeId 
-          ? `http://127.0.0.1:8080/api/v1/insurers/${storeId}/products/` 
-          : 'http://127.0.0.1:8080/api/v1/products/';
+          ? `http://127.0.0.1:8000/api/v1/insurers/${storeId}/products/` 
+          : 'http://127.0.0.1:8000/api/v1/products/';
         const response = await axios.get(url);
         setFilteredProducts(response.data);
         setError(null);

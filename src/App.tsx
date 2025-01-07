@@ -17,6 +17,7 @@ import Security from './Pages/Dashboard/Security';
 import Settings from './Pages/Dashboard/Settings';
 import Icompanies from './Pages/Dashboard/Icompanies';
 import Stores from './Pages/Dashboard/Stores';
+import Communication from './Pages/Dashboard/Communication'
 
 const App: React.FC = () => {
 	return (
@@ -32,7 +33,8 @@ const App: React.FC = () => {
 						<Route path="/dashboard/Stores" element={<Stores />} />
 						<Route path="/dashboard/Insurance" element={<Icompanies />} />
 						<Route path="/dashboard/Payments" element={<Payment />} />
-						<Route path="/dashboard/Community" element={<Community />} />
+						{/* <Route path="/dashboard/Community" element={<Community />} /> */}
+						<Route path="/dashboard/Community" element={<Communication />} />
 						<Route path="/dashboard/Security" element={<Security />} />
 						<Route path="/dashboard/Settings" element={<Settings />} />
 						<Route path="/dashboard/Products/cart" element={<Cart />} />

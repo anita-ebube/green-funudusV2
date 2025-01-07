@@ -216,7 +216,7 @@ const Checkout: React.FC = () => {
             {cartProducts.map((product, index) => (
               <div className="border-t flex gap-3 justify-between md:gap-6 py-4" key={index}>
                 <div className="flex-shrink-0 w-20 h-20 md:w-24 md:h-24">
-                  <img src={`http://127.0.0.1:8080` + product.get_image} alt="" className="object-cover w-full h-full rounded-md" />
+                  <img src={`http://127.0.0.1:8000` + product.get_image} alt="" className="object-cover w-full h-full rounded-md" />
                 </div>
                 <div className="sm:max-w-[300px] w-full lg:max-w-[400px]">
                   <div className="flex justify-between items-center">

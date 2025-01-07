@@ -85,7 +85,7 @@ const Settings: React.FC = () => {
 
       setLoading((prev) => ({ ...prev, fetch: true }));
       try {
-        const response = await axios.get<ApiResponse>('http://127.0.0.1:8080/api/v1/profile/', {
+        const response = await axios.get<ApiResponse>('http://127.0.0.1:8000/api/v1/profile/', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -113,7 +113,7 @@ const Settings: React.FC = () => {
           if (profile.profile_photo) {
             const profilePhotoPreview = document.getElementById('profile-photo-preview') as HTMLImageElement;
             if (profilePhotoPreview) {
-              profilePhotoPreview.src = `http://127.0.0.1:8080${profile.profile_photo}`;
+              profilePhotoPreview.src = `http://127.0.0.1:8000${profile.profile_photo}`;
             }
           }
         }
@@ -199,7 +199,7 @@ const Settings: React.FC = () => {
     });
 
     try {
-      const response = await axios.put('http://127.0.0.1:8080/api/v1/profile/', updatedFormData, {
+      const response = await axios.put('http://127.0.0.1:8000/api/v1/profile/', updatedFormData, {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'multipart/form-data',
