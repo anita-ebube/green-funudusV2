@@ -161,7 +161,7 @@ const Cart: React.FC = () => {
                                         {/* Image Section */}
                                         <div className="flex-shrink-0 w-20 h-20 md:w-24 md:h-24">
                                             <img
-                                                src={`http://127.0.0.1:8000` + product.get_image}
+                                                src={`https://api.qubic.com.ng` + product.get_image}
                                                 alt={product.name}
                                                 className="object-cover w-full h-full rounded-md"
                                             />

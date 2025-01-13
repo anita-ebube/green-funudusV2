@@ -28,13 +28,13 @@ const NavBar: React.FC = () => {
         // Fetch profile image
         try {
 		const token = JSON.parse(localStorage.getItem('access_token') || '""');
-          const response = await axios.get('http://127.0.0.1:8000/api/v1/profile/', {
+          const response = await axios.get('https://api.qubic.com.ng/api/v1/profile/', {
             headers: {
               Authorization: `Bearer ${token}` 
             }
           });
           if (response.data.profile) {
-            setProfileImage(`http://127.0.0.1:8000${response.data.profile.profile_photo}`);
+            setProfileImage(`https://api.qubic.com.ng${response.data.profile.profile_photo}`);
           }
         } catch (error) {
           console.error('Error fetching profile image:', error);

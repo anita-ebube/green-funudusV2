@@ -29,7 +29,7 @@ const Community: React.FC = () => {
     const fetchCommunities = async () => {
       try {
         const token = JSON.parse(localStorage.getItem('access_token') || '""');
-        const response = await axios.get('http://127.0.0.1:8000/api/v1/communities/', {
+        const response = await axios.get('https://api.qubic.com.ng/api/v1/communities/', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
