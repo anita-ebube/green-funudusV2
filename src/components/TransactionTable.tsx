@@ -25,20 +25,19 @@ const TransactionTable: React.FC = () => {
       try {
         // Retrieve token from localStorage
         const token = localStorage.getItem('access_token');
-		console.log(token)
         if (!token) {
           setError('No authentication token found.');
           setLoading(false);
           return;
         }
-        const response = await axios.get('http://127.0.0.1:8000/api/v1/dashboard/', {
+        const response = await axios.get('https://api.qubic.com.ng/api/v1/dashboard/', {
           headers: {
-            Authorization: `${token}`,
-			contentType: 'appplication/json'
+            'Authorization': `Bearer ${token.replace(/['"]+/g, '')}`,
+			      'Content-Type': 'application/json'
           },
         });
 
-        const data = response.data; // Assuming this returns an array or object
+        const data = response.data.recent_transactions; // Assuming this returns an array or object
 
         // Format the data into the required structure
         const formattedData: Transaction[] = data.map((transaction: any) => ({

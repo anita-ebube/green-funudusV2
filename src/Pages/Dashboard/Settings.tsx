@@ -85,7 +85,7 @@ const Settings: React.FC = () => {
 
       setLoading((prev) => ({ ...prev, fetch: true }));
       try {
-        const response = await axios.get<ApiResponse>('http://127.0.0.1:8000/api/v1/profile/', {
+        const response = await axios.get<ApiResponse>('https://api.qubic.com.ng/api/v1/profile/', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -93,8 +93,9 @@ const Settings: React.FC = () => {
         
         if (response.status === 200) {
           const { profile } = response.data;
+          console.log(profile)
           const formattedData: ProfileData = {
-            profile_photo: null,
+            profile_photo: profile.profile_photo ? new File([], profile.profile_photo) : null, 
             phone_number: profile.phone_number || '',
             fullname: profile.fullname || '',
             location: profile.location || '',
@@ -105,7 +106,16 @@ const Settings: React.FC = () => {
           };
           setFormData(formattedData);
           setInitialData(formattedData);
+          // Check if profile is completed based on the actual profile photo URL
           setIsProfileCompleted(!!profile.profile_photo);
+          
+          // Display existing profile photo if available
+          if (profile.profile_photo) {
+            const profilePhotoPreview = document.getElementById('profile-photo-preview') as HTMLImageElement;
+            if (profilePhotoPreview) {
+              profilePhotoPreview.src = `https://api.qubic.com.ng${profile.profile_photo}`;
+            }
+          }
         }
       } catch (err) {
         setError('Failed to fetch profile data.');
@@ -189,7 +199,7 @@ const Settings: React.FC = () => {
     });
 
     try {
-      const response = await axios.put('http://127.0.0.1:8000/api/v1/profile/', updatedFormData, {
+      const response = await axios.put('https://api.qubic.com.ng/api/v1/profile/', updatedFormData, {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'multipart/form-data',
@@ -208,7 +218,7 @@ const Settings: React.FC = () => {
   };
 
   const renderFormField = ({ label, name, type, ...rest }) => {
-    const isDisabled = loading.update || loading.fetch || isProfileCompleted;
+    const isDisabled = false;
 
     if (type === 'file') {
       return (

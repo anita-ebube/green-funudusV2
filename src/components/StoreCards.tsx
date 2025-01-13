@@ -13,8 +13,9 @@ const StoreCard: React.FC<IIcard> = ({ product }) => {
         dispatch(setIsModalOpen(true));
         dispatch(setModalProduct(product));
     };
-
+    console.log(product, 'mehn')
     const handleViewProducts = (product: ICard) => {
+        
         navigate('/dashboard/Products', {
             state: {
                 storeData: product,
@@ -27,12 +28,12 @@ const StoreCard: React.FC<IIcard> = ({ product }) => {
         <div className="p-4 w-full bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
             <div onClick={() => handleOpenModal(product)} className="relative pb-12">
                 <img 
-                    src={product.logo} 
-                    alt={product.productName} 
+                    src={`https://api.qubic.com.ng${product.logo}`} //product.logo} 
+                    alt={product.name} 
                     className="w-full h-48 object-cover rounded-md"
                 /> 
                 <div className="mt-4 flex justify-between items-center">
-                    <h3 className="text-lg font-medium text-gray-900">{product.productName}</h3>
+                    <h3 className="text-lg font-medium text-gray-900">{product.name}</h3>
                     <span className="text-primary font-semibold">{product.amount}</span>
                 </div>
                 

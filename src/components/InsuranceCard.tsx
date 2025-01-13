@@ -17,7 +17,7 @@ const InsuranceCard: React.FC<IIcard> = ({ product }) => {
 
     const fetchInsuranceDetails = async () => {
         try {
-            const response = await axios.get(`http://127.0.0.1:8000/api/v1/insurers/${product.slug}/`);
+            const response = await axios.get(`https://api.qubic.com.ng/api/v1/insurers/${product.slug}/`);
             // Navigate to stores page with the fetched data
             navigate('/dashboard/Stores', {
                 state: {
@@ -35,7 +35,7 @@ const InsuranceCard: React.FC<IIcard> = ({ product }) => {
         <div className="p-[10px] w-full max-w-[230px] border-2 border-[#EBEEF4] rounded-lg relative">
             <div onClick={() => handleOpenModal(product)} className="pb-9">
                 <img 
-                    src={product.logo ? `http://127.0.0.1:8000${product.logo}` : '/default-logo.png'} 
+                    src={product.logo ? `https://api.qubic.com.ng${product.logo}` : '/default-logo.png'} 
                     alt={product.name} 
                     className="w-full h-auto object-cover"
                 />

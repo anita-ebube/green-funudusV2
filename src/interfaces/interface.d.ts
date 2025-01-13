@@ -20,6 +20,7 @@ export interface ICard {
 	amount: string;
 	slug: string; 
 	description: string;
+	get_image: string;
 	insurance: string;
 }
 

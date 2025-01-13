@@ -25,7 +25,7 @@ const Icompanies: React.FC = () => {
         const fetchData = async () => {
             try {
                 setLoading(true);
-                const response = await axios.get('http://127.0.0.1:8000/api/v1/insurers/');
+                const response = await axios.get('https://api.qubic.com.ng/api/v1/insurers/');
                 console.log(response, 'gifted')
                 setFilteredProducts(response.data);
                 setLoading(false);
