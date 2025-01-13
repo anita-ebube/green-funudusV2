@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import ProductInputs from '../../components/ProductInputs';
 import Card from '../../components/Card';
-import ProductModal from '../../components/ProductModal';
+// import ProductModal from '../../components/ProductModal';
 import { ICard } from '../../interfaces/interface';
 import axios from 'axios';
 
@@ -139,7 +139,7 @@ const Products: React.FC = () => {
             </div>
           )}
         </div>
-        <ProductModal />
+        {/* <ProductModal /> */}
       </div>
     </motion.div>
   );

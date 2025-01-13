@@ -3,7 +3,7 @@ import axios from 'axios';
 import { motion } from 'framer-motion';
 import { ICard } from '../../interfaces/interface';
 import ProductInputs from '../../components/ProductInputs';
-import ProductModal from '../../components/ProductModal';
+// import ProductModal from '../../components/ProductModal';
 import Card from '../../components/StoreCards';
 
 const pageTransition = {
@@ -122,7 +122,7 @@ const Insurance: React.FC = () => {
 						</div>
 					</div>
 				</div>
-				<ProductModal />
+				{/* <ProductModal /> */}
 			</div>
 		</motion.div>
 	);

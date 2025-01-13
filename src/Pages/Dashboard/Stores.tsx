@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
-import { Store } from '../../dummyData/data';
-import { StoreCard } from '../../interfaces/interface';
-import Card from '../../components/StoreCards';
-import StoreModal from '../../components/StoreModal';
 import { Search } from 'lucide-react';
+import Card from '../../components/StoreCards'; // Import the Card component
+
+// Define interfaces
+interface StoreCard {
+  name: string;
+  get_image: string;
+  description?: string;
+  [key: string]: any; // For additional properties
+}
 
 const pageTransition = {
   initial: { opacity: 0, x: 20 },
@@ -24,10 +29,8 @@ const Stores: React.FC = () => {
   useEffect(() => {
     if (location.state?.insuranceData) {
       const data = location.state.insuranceData;
-      const formattedData = Array.isArray(data) ? data : [data];
+      const formattedData: StoreCard[] = Array.isArray(data) ? data : [data];
       setFilteredProducts(formattedData);
-    } else {
-      setFilteredProducts([...Store]);
     }
   }, [location.state]);
 
@@ -37,12 +40,14 @@ const Stores: React.FC = () => {
   };
 
   const filteredAndSearchedProducts = filteredProducts.filter(product =>
-    product.name.toLowerCase().includes(searchTerm.toLowerCase())
+    product.name?.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const currentProducts = Array.isArray(filteredAndSearchedProducts) 
-    ? filteredAndSearchedProducts.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
-    : [];
+  const currentProducts = filteredAndSearchedProducts.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
   const totalPages = Math.ceil(filteredAndSearchedProducts.length / itemsPerPage);
 
   return (
@@ -69,7 +74,7 @@ const Stores: React.FC = () => {
                 Showing {currentProducts.length} of {filteredAndSearchedProducts.length} stores
               </p>
             </div>
-            
+
             <div className="w-full md:w-72 relative">
               <input
                 type="text"
@@ -104,7 +109,7 @@ const Stores: React.FC = () => {
                 >
                   Previous
                 </button>
-                
+
                 {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
                   <button
                     key={page}
@@ -131,7 +136,6 @@ const Stores: React.FC = () => {
           )}
         </div>
       </div>
-      <StoreModal />
     </motion.div>
   );
 };

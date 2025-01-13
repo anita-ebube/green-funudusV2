@@ -3,7 +3,7 @@ import axios from 'axios';
 import { motion } from 'framer-motion';
 import { InsuranceCard } from '../../interfaces/interface';
 import Card from '../../components/InsuranceCard';
-import StoreModal from '../../components/InsuranceModal';
+// import StoreModal from '../../components/InsuranceModal';
 
 const pageTransition = {
     initial: { opacity: 0, x: 20 },
@@ -117,7 +117,7 @@ const Icompanies: React.FC = () => {
                         </>
                     )}
                 </div>
-                <StoreModal />
+                {/* <StoreModal /> */}
             </div>
         </motion.div>
     );

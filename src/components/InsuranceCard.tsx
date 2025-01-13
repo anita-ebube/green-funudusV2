@@ -10,10 +10,10 @@ const InsuranceCard: React.FC<IIcard> = ({ product }) => {
     const navigate = useNavigate();
     const location = useLocation();
 
-    const handleOpenModal = (product: StoreCard) => {
-        dispatch(setIsModalOpen(true));
-        dispatch(setModalProduct(product));
-    };
+    // const handleOpenModal = (product: StoreCard) => {
+    //     dispatch(setIsModalOpen(true));
+    //     dispatch(setModalProduct(product));
+    // };
 
     const fetchInsuranceDetails = async () => {
         try {
@@ -33,7 +33,7 @@ const InsuranceCard: React.FC<IIcard> = ({ product }) => {
 
     return (
         <div className="p-[10px] w-full max-w-[230px] border-2 border-[#EBEEF4] rounded-lg relative">
-            <div onClick={() => handleOpenModal(product)} className="pb-9">
+            <div  className="pb-9">
                 <img 
                     src={product.logo ? `https://api.qubic.com.ng${product.logo}` : '/default-logo.png'} 
                     alt={product.name} 
