@@ -25,6 +25,8 @@ const StoreCard: React.FC<IIcard> = ({ product }) => {
     });
   };
 
+  console.log(product, 'anothername')
+
   return (
     <div className="p-4 w-full bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
       {/* Clickable section to open modal */}
@@ -34,7 +36,7 @@ const StoreCard: React.FC<IIcard> = ({ product }) => {
       >
         {/* Product logo */}
         <img
-          src={`https://api.qubic.com.ng${product.logo}`}
+          src={`https://api.qubic.com.ng${product.image}`}
           alt={product.name || 'Store Logo'}
           className="w-full h-48 object-cover rounded-md"
         />

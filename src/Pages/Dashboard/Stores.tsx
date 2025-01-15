@@ -92,6 +92,7 @@ const Stores: React.FC = () => {
               {currentProducts.map((product, index) => (
                 <Card product={product} key={index} />
               ))}
+              
             </div>
           ) : (
             <div className="text-center py-12">

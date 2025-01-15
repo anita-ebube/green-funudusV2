@@ -30,10 +30,11 @@ const Products: React.FC = () => {
       setIsLoading(true);
       try {
         const url = storeId 
-          ? `https://api.qubic.com.ng/api/v1/insurers/${storeId}/products/` 
+          ? `https://api.qubic.com.ng/api/v1/insurers/${storeData.store.slug}/categories/${storeData.slug}/` 
           : 'https://api.qubic.com.ng/api/v1/products/';
         const response = await axios.get(url);
-        setFilteredProducts(response.data);
+        console.log(response, 'another222')
+        setFilteredProducts(response.data.products);
         setError(null);
       } catch (err) {
         setError('Failed to fetch products. Please try again.');
