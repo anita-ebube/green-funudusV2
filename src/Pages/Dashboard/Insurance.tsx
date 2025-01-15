@@ -28,6 +28,7 @@ const Insurance: React.FC = () => {
 			try {
 				setIsLoading(true);
 				const response = await axios.get('https://api.qubic.com.ng/api/v1/insurers/slug/');
+			
 				setFilteredProducts(response.data); // Update state with fetched data
 				setError(null); // Clear previous errors
 			} catch (err) {
@@ -74,6 +75,7 @@ const Insurance: React.FC = () => {
 			className="pt-4 lg:ml-[242px] border-2 min-h-screen"
 		>
 			<div className="pt-20 lg:ps-6 pe-4">
+				this is me trying nonsense 
 				<div className="rounded-lg bg-white p-4 mt-6 w-full flex flex-col items-center">
 					<div className="w-full max-w-[982.5px]">
 						<ProductInputs getFilteredProducts={receiveProductSearch} />

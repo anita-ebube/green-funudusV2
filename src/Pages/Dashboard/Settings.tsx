@@ -279,7 +279,7 @@ const Settings: React.FC = () => {
           <p className="text-blue-500">Loading profile data...</p>
         </div>
       ) : (
-        <form onSubmit={handleSubmit} className="px-5 py-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <form onSubmit={handleSubmit} className="px-5 py-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
           {formFields.map((field, index) => (
             <React.Fragment key={index}>
               {renderFormField(field)}

@@ -14,14 +14,18 @@ const InsuranceCard: React.FC<IIcard> = ({ product }) => {
     //     dispatch(setIsModalOpen(true));
     //     dispatch(setModalProduct(product));
     // };
+console.log(product, 'product')
+
 
     const fetchInsuranceDetails = async () => {
+        
         try {
             const response = await axios.get(`https://api.qubic.com.ng/api/v1/insurers/${product.slug}/`);
+            console.log('Insurance details:', response.data);
             // Navigate to stores page with the fetched data
             navigate('/dashboard/Stores', {
                 state: {
-                    insuranceData: response.data,
+                    insuranceData: response.data.categories,
                     insurerSlug: product.slug
                 }
             });
@@ -50,7 +54,7 @@ const InsuranceCard: React.FC<IIcard> = ({ product }) => {
                     }}
                     className="px-[10px] py-2 border-2 text-primary text-xs border-primary rounded-md bg-white absolute z-10 bottom-[3%] left-[5%] hover:bg-primary hover:text-white transition-colors"
                 >
-                    View our Stores
+                    View our Stores22
                 </button>
             </div>
         </div>
