@@ -54,7 +54,7 @@ console.log(product, 'product')
                     }}
                     className="px-[10px] py-2 border-2 text-primary text-xs border-primary rounded-md bg-white absolute z-10 bottom-[3%] left-[5%] hover:bg-primary hover:text-white transition-colors"
                 >
-                    View our Stores22
+                    View our Stores
                 </button>
             </div>
         </div>
