@@ -175,13 +175,15 @@ const Register: React.FC = () => {
   };
 
   return (
-    <div className="bg-black h-screen w-full p-4 lg:p-0 flex justify-center overflow-y-hidden items-center" id="register">
+    <div className="bg-black min-h-screen w-full p-4 lg:p-0 flex justify-center overflow-y-auto items-center" id="register">
       <div className="hidden lg:block w-[50%] bg-cover">
         <img className="w-full h-full object-contain" src="/images/login.jpg" alt="signup_image" />
       </div>
-      <div className="lg:w-[50%] lg:px-[70px] py-[30px] flex flex-col gap-2 max-h-[578px] items-center">
+      <div className="lg:w-[50%] lg:px-[70px] py-[30px] flex flex-col gap-2 min-h-screen lg:min-h-0">
         <div>
+         <a href="https://pay-go-gamma.vercel.app/">
           <img src="/svg-icons/logo.svg" alt="logo" />
+         </a>
         </div>
 
         <div className="w-full max-w-[442px] m-auto mb-5">
@@ -199,7 +201,7 @@ const Register: React.FC = () => {
           </div>
         )}
 
-        <form onSubmit={formSubmit} className="w-full m-auto max-w-[442px]">
+        <form onSubmit={formSubmit} className="w-full m-auto max-w-[442px] flex flex-col">
           <div className="mb-3">
             <label htmlFor="username" className="text-sm block mb-2 text-white">
               Full Name
@@ -285,7 +287,7 @@ const Register: React.FC = () => {
             {isSubmitting ? 'Processing...' : 'Proceed with verification'}
           </button>
 
-          <div className="w-full text-center">
+          <div className="w-full text-center mt-auto">
             <p className="text-white text-sm">
               Already have an account?{' '}
               <Link to="/login" className="text-primary cursor-pointer">

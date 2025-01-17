@@ -67,7 +67,7 @@ const Icompanies: React.FC = () => {
             className="pt-4 lg:ml-[242px] border-2 min-h-screen"
         >
             <div className="pt-20 lg:ps-6 pe-4">
-                <div className="rounded-lg bg-white p-4 mt-6 w-full flex flex-col ">
+                <div className="rounded-lg bg-white p-4 mt-6 w-full lg:flex flex-col ">
                     {loading ? (
                         <p className="text-gray-500 text-base italic">Loading products...</p>
                     ) : error ? (
